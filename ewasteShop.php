@@ -24,23 +24,33 @@
 
 <body>
     <header>
+        <form>
         <nav class="navbar">
             <div class="logo-container">
-                <a href="#home" class="logo"><img src="images/logo.png" alt="EWastePH Logo"></a>
+                <button formaction ="ewasteWeb.php" class="logo"><img src="images/logo.png" alt="EWastePH Logo"></button>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-                <li><a href="#shop">Shop</a></li>
+                <li><a href="ewasteWeb.php#home">Home</a></li>
+                <li><a href="ewasteWeb.php#about">About Us</a></li>
+                <li><a href="ewasteWeb.php#faq">FAQ</a></li>
+                <li><a href="ewasteWeb.php#contact">Contact Us</a></li>
+                <li><a href="ewasteShop.php">Shop</a></li>
                 <li><a href="#profile"><i class="fa fa-user"></i></a></li>
             </ul>
         </nav>
+        </form>
     </header>
 
     <section id="shop" class="section shop-section">
         <h2>Shop</h2>
+        
+        
+
+
+
+
+
+
         <div class="new-products">
             <h3>Latest Available Items</h3>
             <div class="product-grid">
@@ -81,7 +91,72 @@
                     </div>
              </div>
         </div>
+
+
+        <div class="all-products">
+            <h3>All Available Items</h3>
+            <div class="product-grid">
+                    <div class="product-card">
+                        <img src="images/productsImg/motherboard1.png" alt="Motherboard">
+                        <h3>Motherboard</h3>
+                        <p>P 350.00</p>
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/productsImg/dellCpu.png" alt="Processor">
+                        <h3>Dell CPU</h3>
+                        <p>P 1,000.00</p>
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/productsImg/defected_laptop.png" alt="RAM">
+                        <h3>HP defected laptop</h3>
+                        <p>P 500.00</p>
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/productsImg/discplayer.png" alt="RAM">
+                        <h3>Disc Player</h3>
+                        <p>P 500.00</p>
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/productsImg/sd.png" alt="RAM">
+                        <h3>SD sht</h3>
+                        <p>P 500.00</p>
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy</button>
+                    </div>
+             </div>
+        </div>
+
+
+
     </section>
+
+
+        <!-- Back to Top Button -->
+        <button id="upButton" title="Go to top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 EWastePH. All rights reserved. </p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy </a>
+            <a href="#">Terms of Service</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
 
 
 
