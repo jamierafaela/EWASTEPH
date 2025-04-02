@@ -45,4 +45,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-//aa
+
+
+
+
+// JavaScript for Category Filter
+
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryFilter = document.getElementById('category-filter');
+    const products = document.querySelectorAll('.product-card');
+    
+    // Listen for category change
+    categoryFilter.addEventListener('change', function() {
+        const selectedCategory = categoryFilter.value;  // Get the selected option value
+        
+        products.forEach(function(product) {
+            const productCategory = product.getAttribute('value');  // Get the category from data attribute
+            
+            if (selectedCategory === 'all' || selectedCategory === productCategory) {
+                product.style.display = 'block';  // Show the product
+            } else {
+                product.style.display = 'none';  // Hide the product
+            }
+        });
+    });
+});

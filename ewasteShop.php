@@ -43,7 +43,37 @@
 
     <section id="shop" class="section shop-section">
         <h2>Shop</h2>
-        
+        <div class="shop-header">
+            <form action="cart.php" method="GET">
+                <button type="submit" class="cart-button">
+                    <i class="fa fa-shopping-cart"></i>
+                </button>
+            </form>
+            
+            <!-- Search Bar -->
+            <input type="text" id="search-bar" placeholder="Search products..." class="search-bar">
+            
+            <!-- Category Filter -->
+            <select id="category-filter" class="category-filter">
+                <option value="all">All Categories</option>
+                <option value="motherboard">Motherboard</option>
+                <option value="processor">Processor</option>
+                <option value="ram">RAM</option>
+                <option value="keyboard">Keyboard</option>
+                <option value="laptop">Laptop</option>
+                <option value="monitor">Monitor</option>
+                <option value="hdd/sdd">HDD/SDD</option>
+                <option value="chargers">USB</option>
+                <option value="processor">Batteries</option>
+                <option value="coolingFans">Cooling Fans</option>
+                <option value="smartphones">Smartphones</option>
+                <option value="tablets">Tablets</option>
+                <option value="player">Player</option>
+                <option value="smartphones">Smartphones</option>
+                <option value="chargers">Chargers</option>
+
+            </select>
+        </div>
         
 
 
@@ -53,6 +83,48 @@
 
         <div class="new-products">
             <h3>Latest Available Items</h3>
+            <div class="product-grid" id="product-list">
+                    <div class="product-card" value="motherboard">
+                        <img src="images/productsImg/motherboard1.png" alt="Motherboard">
+                        <h3>Motherboard</h3>
+                        <p>P 350.00</p>
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy</button>
+                    </div>
+                    <div class="product-card" value="processor">
+                        <img src="images/productsImg/dellCpu.png" alt="Processor">
+                        <h3>Dell CPU</h3>
+                        <p>P 1,000.00</p>
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy</button>
+                    </div>
+                    <div class="product-card" value="laptop">
+                        <img src="images/productsImg/defected_laptop.png" alt="RAM">
+                        <h3>HP defected laptop</h3>
+                        <p>P 500.00</p>
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy</button>
+                    </div>
+                    <div class="product-card" value="Player">
+                        <img src="images/productsImg/discplayer.png" alt="RAM">
+                        <h3>Disc Player</h3>
+                        <p>P 500.00</p>
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy</button>
+                    </div>
+                    <div class="product-card" value="hardDrive">
+                        <img src="images/productsImg/sd.png">
+                        <h3>SD sht</h3>
+                        <p>P 500.00</p>
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy</button>
+                    </div>
+             </div>
+        </div>
+
+
+        <div class="all-products">
+            <h3>All Available Items</h3>
             <div class="product-grid">
                     <div class="product-card">
                         <img src="images/productsImg/motherboard1.png" alt="Motherboard">
@@ -85,34 +157,6 @@
                     <div class="product-card">
                         <img src="images/productsImg/sd.png" alt="RAM">
                         <h3>SD sht</h3>
-                        <p>P 500.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-             </div>
-        </div>
-
-
-        <div class="all-products">
-            <h3>All Available Items</h3>
-            <div class="product-grid">
-                    <div class="product-card">
-                        <img src="images/productsImg/motherboard1.png" alt="Motherboard">
-                        <h3>Motherboard</h3>
-                        <p>P 350.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/productsImg/dellCpu.png" alt="Processor">
-                        <h3>Dell CPU</h3>
-                        <p>P 1,000.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/productsImg/defected_laptop.png" alt="RAM">
-                        <h3>HP defected laptop</h3>
                         <p>P 500.00</p>
                         <button class="btn">Add to Cart</button>
                         <button class="btn">Buy</button>
