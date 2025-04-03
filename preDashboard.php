@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="ewasteWeb.css">
 </head>
 <body>
+    <div class="mainmodal">
     <div class="modal">
         <div class="modal-header">
             <h2 class="modal-title">Complete Your Profile</h2>
@@ -14,14 +15,7 @@
         </div>
         <div class="modal-body">
             <p class="instruction-text">Please complete your profile information to continue</p>
-            
-            <div class="progress-container">
-                <div class="progress-bar-bg">
-                    <div class="progress-bar"></div>
-                </div>
-                <p class="progress-text">50% Complete</p>
-            </div>
-            
+
             <form>
                 <!-- Full Name -->
                 <div class="form-group">
@@ -77,6 +71,7 @@
             <span class="skip-link">Complete Later</span>
             <button class="submit-button">Save & Continue</button>
         </div>
+    </div>
     </div>
 </body>
 </html>

@@ -490,18 +490,63 @@ section {
 }
 
 /* Registration Section */
-
-.registration-success {
-    color: green;
-    font-weight: bold;
-    padding: 10px;
-    background-color: #e8f5e9;
-    border-radius: 5px;
-    margin-top: 15px;
+.registration-success-container {
+    background: linear-gradient(to bottom, rgba(25, 10, 10, 0.8), rgba(42, 93, 55, 0.7)), url('images/tvbg_enhanced.jpg') center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.success-message {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    text-align: center; /* Center text elements */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Ensures h2 and a are centered */
+    animation: fadeIn 0.5s ease-in-out;
+}
+.success-message h2, a {
+    align-items: center;
+    text-align: center;
+}
+.success-message h2 {
+    color: #2A5D37; /* Deep green */
+    margin-bottom: 15px;
+}
+
+.success-message a {
+    font-size: 19px;
+    display: inline-block;
+    background: #2A5D37;
+    color: #FFD700;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 10px; /* Ensures spacing below h2 */
+}
+
+.success-message a:hover {
+    background: #FFD700;
+    color:#2A5D37;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+
+}
 
 /*user-preDash*/
+.mainmodal{
+    background: linear-gradient(to bottom, rgba(25, 10, 10, 0.8), rgba(42, 93, 55, 0.7)), url('images/tvbg_enhanced.jpg') center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .modal-container {
     position: fixed; 
     top: 0;
@@ -522,6 +567,7 @@ section {
     width: 500px;
     max-width: 90%;
     overflow: hidden;
+    
 }
 
 .modal-header {
@@ -562,10 +608,6 @@ section {
     margin-bottom: 15px;
 }
 
-.progress-container {
-    margin-bottom: 20px;
-}
-
 .progress-bar-bg {
     background-color: #eeeeee;
     height: 8px;
@@ -593,7 +635,7 @@ section {
     display: block;
     font-size: 14px;
     font-weight: bold;
-    color: #333333;
+    color: #39403c;
     margin-bottom: 5px;
 }
 
@@ -637,21 +679,13 @@ section {
     align-items: center;
 }
 
-.profile-picture-upload {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: #f5f5f5;
+.profile-picture-container input[type="submit"] {
     border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 15px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    color: #999999;
-    cursor: pointer;
     margin-top: 10px;
 }
-
 .payment-method {
     border: 1px solid #cccccc;
     border-radius: 5px;
@@ -692,13 +726,13 @@ section {
 }
 
 .skip-link {
-    color: #4285f4;
+    color: #8cc75e;
     text-decoration: underline;
     cursor: pointer;
 }
 
 .submit-button {
-    background-color: #4285f4;
+    background-color: #69cd82;
     color: #ffffff;
     border: none;
     border-radius: 20px;
@@ -706,8 +740,19 @@ section {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.3s;
 }
 
+.submit-button:hover {
+    background-color: #2a5d37;
+    color: #f1c40f;
+    transform: scale(1.05);
+ 
+}
+.skip-link:hover {
+    text-decoration: underline;
+    color: #2a5d37;
+}
 
 
 /* Profile Section */
