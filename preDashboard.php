@@ -11,7 +11,9 @@
     <div class="modal">
         <div class="modal-header">
             <h2 class="modal-title">Complete Your Profile</h2>
-            <div class="close-button">×</div>
+            <div class="close-button">
+                <input type="submit" value="X" name="close">
+            </div>
         </div>
         <div class="modal-body">
             <p class="instruction-text">Please complete your profile information to continue</p>
@@ -63,14 +65,15 @@
                        </select>
                     </div>
                 </div>
-            </form>
         </div>
         
         <div class="modal-footer">
             <p class="required-fields-note">* Required fields</p>
-            <span class="skip-link">Complete Later</span>
-            <button class="submit-button">Save & Continue</button>
+            <button type="reset">Reset</button>
+            <button type="submit" class="submit-button">Save & Continue</button>
         </div>
+    </form>
+
     </div>
     </div>
 </body>
