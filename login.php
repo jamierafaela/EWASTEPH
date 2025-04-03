@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['full_name'] = $row['full_name'];
-            echo "Login successful! <a href='dashboard.php'>Go to Dashboard</a>";
+            echo "Login successful! <a href='ewasteWeb.php'>Go to Home</a>";
         } else {
             echo "Incorrect password!";
         }

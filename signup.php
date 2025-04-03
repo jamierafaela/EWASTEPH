@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="ewasteWeb.css"> <!-- Link to your CSS file -->
+</head>
 <?php
 include 'db_connect.php';
 
@@ -20,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("sss", $full_name, $email, $password);
 
         if ($stmt->execute()) {
-            echo "Registration successful! <a href='ewasteWeb.php'>Login here</a>";
+            echo "<div id='registration-success'>Registration successful! <a href='complete_profile.php'>Complete your Profile</a></div>";
         } else {
             echo "Error: " . $stmt->error;
         }
@@ -30,3 +36,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 </form>
+</html>

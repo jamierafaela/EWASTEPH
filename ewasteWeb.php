@@ -35,7 +35,7 @@
                 <a href="#home" class="logo"><img src="images/logo.png" alt="EWastePH Logo"></a>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="#home">Homer</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact Us</a></li>
