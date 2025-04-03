@@ -29,9 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute()) {
             echo "<div class='registration-success-container'>
+            <div class='registration-success-container1'>
                     <h2 class='success-message'>
-                    Registration successfaul! <a href='preDashboard.php'>Complete your Profile</a>
+                    Registration successful! <a href='preDashboard.php'>Complete your Profile</a>
                     </h2>
+                    </div>
                 </div>";
         } else {
             echo "Error: " . $stmt->error;

@@ -498,7 +498,7 @@ section {
     justify-content: center;
 }
 
-.success-message {
+.registration-success-container1 {
     background: #fff;
     padding: 25px;
     border-radius: 10px;
@@ -508,6 +508,10 @@ section {
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Ensures h2 and a are centered */
     animation: fadeIn 0.5s ease-in-out;
+
+}
+.success-message {
+   
 }
 .success-message h2, a {
     align-items: center;
@@ -516,6 +520,7 @@ section {
 .success-message h2 {
     color: #2A5D37; /* Deep green */
     margin-bottom: 15px;
+    font-size: 30px;
 }
 
 .success-message a {
@@ -526,7 +531,6 @@ section {
     padding: 10px 18px;
     border-radius: 5px;
     text-decoration: none;
-    font-weight: bold;
     transition: 0.3s;
     margin-top: 10px; /* Ensures spacing below h2 */
 }
@@ -534,8 +538,6 @@ section {
 .success-message a:hover {
     background: #FFD700;
     color:#2A5D37;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
 
 }
 

@@ -39,7 +39,7 @@
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact Us</a></li>
-                <li><a href="#shop">Shop</a></li>
+                <li><a href="ewasteShop.php">Shop</a></li>
                 <li><a href="#profile"><i class="fa fa-user"></i></a></li>
             </ul>
         </nav>
