@@ -35,7 +35,7 @@
                 <li><a href="ewasteWeb.php#faq">FAQ</a></li>
                 <li><a href="ewasteWeb.php#contact">Contact Us</a></li>
                 <li><a href="ewasteShop.php">Shop</a></li>
-                <li><a href="#profile"><i class="fa fa-user"></i></a></li>
+                <li><a href="ewasteUserDash.php"><i class="fa fa-user"></i></a></li>
             </ul>
         </nav>
         </form>
@@ -45,7 +45,7 @@
         <h2>Shop</h2>
         <div class="shop-header">
             <form action="cart.php" method="GET">
-                <button type="submit" class="cart-button">
+                <button type="submit" formaction="checkout1.php" class="cart-button">
                     <i class="fa fa-shopping-cart"></i>
                 </button>
             </form>
@@ -126,50 +126,36 @@
         <div class="all-products">
             <h3>All Available Items</h3>
             <div class="product-grid">
-                    <div class="product-card">
+            <div class="product-card" value="motherboard">
                         <img src="images/productsImg/motherboard1.png" alt="Motherboard">
                         <h3>Motherboard</h3>
                         <p>P 350.00</p>
                         <button class="btn">Add to Cart</button>
                         <button class="btn">Buy</button>
                     </div>
-                    <div class="product-card">
+                    <div class="product-card" value="processor">
                         <img src="images/productsImg/dellCpu.png" alt="Processor">
                         <h3>Dell CPU</h3>
                         <p>P 1,000.00</p>
                         <button class="btn">Add to Cart</button>
                         <button class="btn">Buy</button>
                     </div>
-                    <div class="product-card">
+                    <div class="product-card" value="laptop">
                         <img src="images/productsImg/defected_laptop.png" alt="RAM">
                         <h3>HP defected laptop</h3>
                         <p>P 500.00</p>
                         <button class="btn">Add to Cart</button>
                         <button class="btn">Buy</button>
                     </div>
-                    <div class="product-card">
+                    <div class="product-card" value="Player">
                         <img src="images/productsImg/discplayer.png" alt="RAM">
                         <h3>Disc Player</h3>
                         <p>P 500.00</p>
                         <button class="btn">Add to Cart</button>
                         <button class="btn">Buy</button>
                     </div>
-                    <div class="product-card">
-                        <img src="images/productsImg/sd.png" alt="RAM">
-                        <h3>SD sht</h3>
-                        <p>P 500.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/productsImg/discplayer.png" alt="RAM">
-                        <h3>Disc Player</h3>
-                        <p>P 500.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/productsImg/sd.png" alt="RAM">
+                    <div class="product-card" value="hardDrive">
+                        <img src="images/productsImg/sd.png">
                         <h3>SD sht</h3>
                         <p>P 500.00</p>
                         <button class="btn">Add to Cart</button>

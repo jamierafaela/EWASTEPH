@@ -244,8 +244,9 @@
 
                     <!-- Log In Form -->
                     <div id="loginForm">
-                        <form action="profileHandler.php" method="POST">
+                        <form action="login.php" method="POST">
                             <input type="hidden" name="signin" value="1">
+                        
                             <ul>
                                 <li>
                                     <label>Email:</label>
@@ -264,12 +265,12 @@
 
                     <!-- Sign Up Form -->
                     <div id="signupForm" class="hidden">
-                        <form action="profileHandler.php" method="POST">
+                        <form action="signup.php" method="POST">
                             <input type="hidden" name="signup" value="1">
                             <ul>
                                 <li>
                                     <label>Name:</label>
-                                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                                    <input type="text" id="full_name" name="full_name" placeholder="Enter your name" required>
                                 </li>
                                 <li>
                                     <label>Email:</label>

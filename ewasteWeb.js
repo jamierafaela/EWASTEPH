@@ -57,15 +57,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Listen for category change
     categoryFilter.addEventListener('change', function() {
-        const selectedCategory = categoryFilter.value;  // Get the selected option value
+        const selectedCategory = categoryFilter.value; 
         
         products.forEach(function(product) {
-            const productCategory = product.getAttribute('value');  // Get the category from data attribute
+            const productCategory = product.getAttribute('value');  
             
             if (selectedCategory === 'all' || selectedCategory === productCategory) {
-                product.style.display = 'block';  // Show the product
+                product.style.display = 'block'; 
             } else {
-                product.style.display = 'none';  // Hide the product
+                product.style.display = 'none';  
             }
         });
     });
