@@ -224,75 +224,75 @@
 
 
 <!-- Profile Section -->
-    <section id="profile" class="section profile-section">
-            <section class="profile-contents">
-                <div class="logIn">
-                    <h2 id="formTitle">Log in</h2>
-                    <p id="formToggleText">
-                        New to site? <a href="#" id="toggleForm">Sign up</a>
-                    </p>
-                </div>
-
-                <div class="continueAcc">
-                    <!-- PHP Check for Form Handling -->
-                    <?php
-                    // Check if there's an error to show
-                    if (isset($_GET['error'])) {
-                        echo "<p style='color: red;'>" . htmlspecialchars($_GET['error']) . "</p>";
-                    }
-                    ?>
-
-                    <!-- Log In Form -->
-                    <div id="loginForm">
-                        <form action="../../src/pages/login.php" method="POST">
-                            <input type="hidden" name="signin" value="1">
-                            <ul>
-                                <li>
-                                    <label>Email:</label>
-                                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                                </li>
-                                <li>
-                                    <label> Password:</label>
-                                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                                </li>
-                                <li>
-                                    <button type="submit" class="btn">Log in</button>
-                                </li>
-                            </ul>
-                        </form>
+        <section id="profile" class="section profile-section">
+                <section class="profile-contents">
+                    <div class="logIn">
+                        <h2 id="formTitle">Log in</h2>
+                        <p id="formToggleText">
+                            New to site? <a href="#" id="toggleForm">Sign up</a>
+                        </p>
                     </div>
 
-                    <!-- Sign Up Form -->
-                    <div id="signupForm" class="hidden">
-                        <form action="./src/pages/signup.php" method="POST">
-                            <input type="hidden" name="signup" value="1">
-                            <ul>
-                                <li>
-                                    <label>Name:</label>
-                                    <input type="text" id="full_name" name="full_name" placeholder="Enter your name" required>
-                                </li>
-                                <li>
-                                    <label>Email:</label>
-                                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                                </li>
-                                <li>
-                                    <label>Password:</label>
-                                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                                </li>
-                                <li>
-                                    <button type="submit" class="btn">Sign up</button>
-                                </li>
-                            </ul>
-                        </form>
+                    <div class="continueAcc">
+                        <!-- PHP Check for Form Handling -->
+                        <?php
+                        // Check if there's an error to show
+                        if (isset($_GET['error'])) {
+                            echo "<p style='color: red;'>" . htmlspecialchars($_GET['error']) . "</p>";
+                        }
+                        ?>
+
+                        <!-- Log In Form -->
+                        <div id="loginForm">
+                            <form action="login.php" method="POST">
+                                <input type="hidden" name="signin" value="1">
+                                <ul>
+                                    <li>
+                                        <label>Email:</label>
+                                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                                    </li>
+                                    <li>
+                                        <label> Password:</label>
+                                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                                    </li>
+                                    <li>
+                                        <button type="submit" class="btn">Log in</button>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+
+                        <!-- Sign Up Form -->
+                        <div id="signupForm" class="hidden">
+                            <form action="signup.php" method="POST">
+                                <input type="hidden" name="signup" value="1">
+                                <ul>
+                                    <li>
+                                        <label>Name:</label>
+                                        <input type="text" id="full_name" name="full_name" placeholder="Enter your name" required>
+                                    </li>
+                                    <li>
+                                        <label>Email:</label>
+                                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                                    </li>
+                                    <li>
+                                        <label>Password:</label>
+                                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                                    </li>
+                                    <li>
+                                        <button type="submit" class="btn">Sign up</button>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
                     </div>
+                </section>
+                <div class="profile-info hidden">
+                    <h2>Welcome, <span id="userName"></span></h2>
+                    <p>Your profile information will be displayed here.</p>
+                    <button id="logoutBtn" class="btn">Log out</button>
                 </div>
-            </section>
-            <div class="profile-info hidden">
-                <h2>Welcome, <span id="userName"></span></h2>
-                <p>Your profile information will be displayed here.</p>
-                <button id="logoutBtn" class="btn">Log out</button>
-            </div>
-    </section>
+        </section>
 
     <!-- Back to Top Button -->
     <button id="upButton" title="Go to top">

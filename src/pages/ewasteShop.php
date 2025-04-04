@@ -6,7 +6,7 @@
     <title>EWastePH SHOP</title>
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../styles/ewasteWeb.css">
+    <link rel="stylesheet" href="../styles/ewasteShop.css">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -44,11 +44,12 @@
     <section id="shop" class="section shop-section">
         <h2>Shop</h2>
         <div class="shop-header">
-            <form action="cart.php" method="GET">
+            <!--<form action="cart.php" method="GET">
                 <button type="submit" formaction="checkout1.php" class="cart-button">
                     <i class="fa fa-shopping-cart"></i>
                 </button>
             </form>
+            `-->
             
             <!-- Search Bar -->
             <input type="text" id="search-bar" placeholder="Search products..." class="search-bar">
@@ -73,104 +74,127 @@
                 <option value="chargers">Chargers</option>
 
             </select>
-        </div>
-        
 
-
-
-
-
-
-        <div class="new-products">
-            <h3>Latest Available Items</h3>
-            <div class="product-grid" id="product-list">
-                    <div class="product-card" value="motherboard">
-                        <img src="/EWastePH/Public/images/productsImg/motherboard1.png" alt="Motherboard">
-                        <h3>Motherboard</h3>
-                        <p>P 350.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
+            <div class="iconCart" onclick="toggleCart()">
+                    <div class="cartIcon">
+                        <i class="fas fa-cart-plus" alt="Cart Icon" onclick="toggleCart()"></i>
                     </div>
-                    <div class="product-card" value="processor">
-                        <img src="/EWastePH/Public/images/productsImg/dellCpu.png" alt="Processor">
-                        <h3>Dell CPU</h3>
-                        <p>P 1,000.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card" value="laptop">
-                        <img src="/EWastePH/Public/images/productsImg/defected_laptop.png" alt="RAM">
-                        <h3>HP defected laptop</h3>
-                        <p>P 500.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card" value="Player">
-                        <img src="/EWastePH/Public/images/productsImg/discplayer.png" alt="RAM">
-                        <h3>Disc Player</h3>
-                        <p>P 500.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card" value="hardDrive">
-                        <img src="/EWastePH/Public/images/productsImg/sd.png">
-                        <h3>SD sht</h3>
-                        <p>P 500.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-             </div>
+                    <div class="totalQuantity">0</div>
+                </div>
         </div>
 
-
-        <div class="all-products">
-            <h3>All Available Items</h3>
-            <div class="product-grid">
-            <div class="product-card" value="motherboard">
-                        <img src="images/productsImg/motherboard1.png" alt="Motherboard">
-                        <h3>Motherboard</h3>
-                        <p>P 350.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card" value="processor">
-                        <img src="images/productsImg/dellCpu.png" alt="Processor">
-                        <h3>Dell CPU</h3>
-                        <p>P 1,000.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card" value="laptop">
-                        <img src="images/productsImg/defected_laptop.png" alt="RAM">
-                        <h3>HP defected laptop</h3>
-                        <p>P 500.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card" value="Player">
-                        <img src="images/productsImg/discplayer.png" alt="RAM">
-                        <h3>Disc Player</h3>
-                        <p>P 500.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card" value="hardDrive">
-                        <img src="images/productsImg/sd.png">
-                        <h3>SD sht</h3>
-                        <p>P 500.00</p>
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-             </div>
+        <div class="container">
+            <div class="new-products">
+                <h3>Latest Available Items</h3>
+                <div class="product-grid" id="product-list">
+                        <div class="product-card" value="motherboard">
+                            <img src="/EWastePH/Public/images/productsImg/motherboard1.png" alt="Motherboard">
+                            <h3>Motherboard</h3>
+                            <p>P 350.00</p>
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy</button>
+                        </div>
+                        <div class="product-card" value="processor">
+                            <img src="/EWastePH/Public/images/productsImg/dellCpu.png" alt="Processor">
+                            <h3>Dell CPU</h3>
+                            <p>P 1,000.00</p>
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy</button>
+                        </div>
+                        <div class="product-card" value="laptop">
+                            <img src="/EWastePH/Public/images/productsImg/defected_laptop.png" alt="RAM">
+                            <h3>HP defected laptop</h3>
+                            <p>P 500.00</p>
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy</button>
+                        </div>
+                        <div class="product-card" value="Player">
+                            <img src="/EWastePH/Public/images/productsImg/discplayer.png" alt="RAM">
+                            <h3>Disc Player</h3>
+                            <p>P 500.00</p>
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy</button>
+                        </div>
+                        <div class="product-card" value="hardDrive">
+                            <img src="/EWastePH/Public/images/productsImg/sd.png">
+                            <h3>SD sht</h3>
+                            <p>P 500.00</p>
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy</button>
+                        </div>
+                </div>
+            </div>
+            <div class="all-products">
+                <h3>All Available Items</h3>
+                <div class="product-grid">
+                <div class="product-card" value="motherboard">
+                            <img src="images/productsImg/motherboard1.png" alt="Motherboard">
+                            <h3>Motherboard</h3>
+                            <p>P 350.00</p>
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy</button>
+                        </div>
+                        <div class="product-card" value="processor">
+                            <img src="images/productsImg/dellCpu.png" alt="Processor">
+                            <h3>Dell CPU</h3>
+                            <p>P 1,000.00</p>
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy</button>
+                        </div>
+                        <div class="product-card" value="laptop">
+                            <img src="images/productsImg/defected_laptop.png" alt="RAM">
+                            <h3>HP defected laptop</h3>
+                            <p>P 500.00</p>
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy</button>
+                        </div>
+                        <div class="product-card" value="Player">
+                            <img src="images/productsImg/discplayer.png" alt="RAM">
+                            <h3>Disc Player</h3>
+                            <p>P 500.00</p>
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy</button>
+                        </div>
+                        <div class="product-card" value="hardDrive">
+                            <img src="images/productsImg/sd.png">
+                            <h3>SD sht</h3>
+                            <p>P 500.00</p>
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy</button>
+                        </div>
+                </div>
+            </div>
         </div>
-
-
-
     </section>
 
+        <!-- Shopping Cart --> 
+    <div class="cart" id="cart">
+            <h2>CART</h2>
+            <div class="listCart">
+                <div class="item">
+                    <img src="images/productsImg/motherboard1.png" alt="Motherboard">
+                    <div class="content">
+                        <div class="name">Product name</div>
+                        <div class="price">$50/1 product</div>
+                    </div>
+                    <div class="quantity">
+                        <button>-</button>
+                        <span class="value">3</span>
+                        <button>+</button>
+                    </div>
+                </div>
+    </div>
+    <div class="buttons">
+        <div class="close" onclick="toggleCart()">CLOSE</div>
+            <div class="checkout">
+                <a href="checkout1.php">CHECKOUT</a>
+            </div>
+        </div>
+    </div>
 
-        <!-- Back to Top Button -->
-        <button id="upButton" title="Go to top">
+
+    <!-- Back to Top Button -->
+    <button id="upButton" title="Go to top">
         <i class="fa fa-arrow-up"></i>
     </button>
 
@@ -189,8 +213,85 @@
     </footer>
 
 
+    <script>
+// Function to toggle the cart visibility
+function toggleCart() {
+    const cart = document.querySelector('.cart');
+    const cartPosition = cart.style.right === '0px' ? '-100%' : '0px'; // Slide in/out
+    cart.style.right = cartPosition;
+}
 
+document.addEventListener("DOMContentLoaded", function () {
+    const cart = [];
+    const cartContainer = document.querySelector(".listCart");
+    const totalQuantity = document.querySelector(".totalQuantity");
 
-    
+    document.querySelectorAll(".product-card .btn:first-of-type").forEach((button, index) => {
+        button.addEventListener("click", function () {
+            const productCard = button.closest(".product-card");
+            const productName = productCard.querySelector("h3").innerText;
+            const productPrice = productCard.querySelector("p").innerText.replace("P ", "");
+            const productImage = productCard.querySelector("img").src;
+
+            let existingProduct = cart.find(item => item.name === productName);
+            if (existingProduct) {
+                existingProduct.quantity++;
+            } else {
+                cart.push({ name: productName, price: parseFloat(productPrice), image: productImage, quantity: 1 });
+            }
+
+            updateCart();
+        });
+    });
+
+    function updateCart() {
+        cartContainer.innerHTML = "";
+        let total = 0;
+        cart.forEach((item, index) => {
+            total += item.quantity;
+            cartContainer.innerHTML += `
+                <div class="item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="content">
+                        <div class="name">${item.name}</div>
+                        <div class="price">P ${item.price}/1 product</div>
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease" data-index="${index}">-</button>
+                        <span class="value">${item.quantity}</span>
+                        <button class="increase" data-index="${index}">+</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        totalQuantity.innerText = total;
+        attachQuantityHandlers();
+    }
+
+    function attachQuantityHandlers() {
+        document.querySelectorAll(".decrease").forEach(button => {
+            button.addEventListener("click", function () {
+                const index = button.getAttribute("data-index");
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity--;
+                } else {
+                    cart.splice(index, 1);
+                }
+                updateCart();
+            });
+        });
+
+        document.querySelectorAll(".increase").forEach(button => {
+            button.addEventListener("click", function () {
+                const index = button.getAttribute("data-index");
+                cart[index].quantity++;
+                updateCart();
+            });
+        });
+    }
+});
+
+</script>    
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php'; // Data base connections
+include 'src/pages/db_connect.php'; // Data base connections
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullName = htmlspecialchars($_POST['full_name']);
     $phoneNumber = htmlspecialchars($_POST['phone_number']);

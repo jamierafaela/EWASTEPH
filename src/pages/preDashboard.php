@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Completion Popup</title>
-    <link rel="stylesheet" href="ewasteWeb.css">
+    <link rel="stylesheet" href="../../src/styles/ewasteWeb.css">
 </head>
 <body>
     <div class="mainmodal">
