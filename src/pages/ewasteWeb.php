@@ -6,7 +6,7 @@
     <title>EWastePH</title>
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="ewasteWeb.css">
+    <link rel="stylesheet" href="../../src/styles/ewasteWeb.css">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Jersey+10&family=Jersey+25&display=swap" rel="stylesheet">
     
     <!-- JavaScript -->
-    <script defer src="ewasteWeb.js"></script>
+    <script defer src="../../src/scripts/ewasteWeb.js"></script>
 </head>
 
 
@@ -32,7 +32,7 @@
     <header>
         <nav class="navbar">
             <div class="logo-container">
-                <a href="#home" class="logo"><img src="images/logo.png" alt="EWastePH Logo"></a>
+                <a href="#home" class="logo"><img src="../../Public/images/logo.png" alt="EWastePH Logo"></a>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Homer</a></li>

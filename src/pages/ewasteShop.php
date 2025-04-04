@@ -6,7 +6,7 @@
     <title>EWastePH SHOP</title>
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="ewasteWeb.css">
+    <link rel="stylesheet" href="../styles/ewasteWeb.css">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -27,15 +27,15 @@
         <form>
         <nav class="navbar">
             <div class="logo-container">
-                <button formaction ="ewasteWeb.php" class="logo"><img src="images/logo.png" alt="EWastePH Logo"></button>
+                <button formaction ="../pages/ewasteWeb.php" class="logo"><img src="../../Public/images/logo.png" alt="EWastePH Logo"></button>
             </div>
             <ul class="nav-links">
-                <li><a href="ewasteWeb.php#home">Home</a></li>
-                <li><a href="ewasteWeb.php#about">About Us</a></li>
-                <li><a href="ewasteWeb.php#faq">FAQ</a></li>
-                <li><a href="ewasteWeb.php#contact">Contact Us</a></li>
-                <li><a href="ewasteShop.php">Shop</a></li>
-                <li><a href="ewasteUserDash.php"><i class="fa fa-user"></i></a></li>
+                <li><a href="../pages/ewasteWeb.php#home">Home</a></li>
+                <li><a href="../pages/ewasteWeb.php#about">About Us</a></li>
+                <li><a href="../pages/ewasteWeb.php#faq">FAQ</a></li>
+                <li><a href="../pages/ewasteWeb.php#contact">Contact Us</a></li>
+                <li><a href="../pages/ewasteShop.php">Shop</a></li>
+                <li><a href="../pages/ewasteWeb.php#profile"><i class="fa fa-user"></i></a></li>
             </ul>
         </nav>
         </form>
@@ -85,14 +85,14 @@
             <h3>Latest Available Items</h3>
             <div class="product-grid" id="product-list">
                     <div class="product-card" value="motherboard">
-                        <img src="images/productsImg/motherboard1.png" alt="Motherboard">
+                        <img src="/images/productsImg/motherboard1.png" alt="Motherboard">
                         <h3>Motherboard</h3>
                         <p>P 350.00</p>
                         <button class="btn">Add to Cart</button>
                         <button class="btn">Buy</button>
                     </div>
                     <div class="product-card" value="processor">
-                        <img src="images/productsImg/dellCpu.png" alt="Processor">
+                        <img src="/Public/images/productsImg/dellCpu.png" alt="Processor">
                         <h3>Dell CPU</h3>
                         <p>P 1,000.00</p>
                         <button class="btn">Add to Cart</button>
