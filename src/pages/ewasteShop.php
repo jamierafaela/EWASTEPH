@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Jersey+10&family=Jersey+25&display=swap" rel="stylesheet">
     
     <!-- JavaScript -->
-    <script defer src="ewasteWeb.js"></script>
+    <script defer src="../scripts/ewasteWeb.js"></script>
 </head>
 
 <body>

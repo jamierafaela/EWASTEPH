@@ -35,7 +35,7 @@
                 <a href="#home" class="logo"><img src="../../Public/images/logo.png" alt="EWastePH Logo"></a>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Homer</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact Us</a></li>
@@ -244,9 +244,8 @@
 
                     <!-- Log In Form -->
                     <div id="loginForm">
-                        <form action="login.php" method="POST">
+                        <form action="../../src/pages/login.php" method="POST">
                             <input type="hidden" name="signin" value="1">
-                        
                             <ul>
                                 <li>
                                     <label>Email:</label>
@@ -265,7 +264,7 @@
 
                     <!-- Sign Up Form -->
                     <div id="signupForm" class="hidden">
-                        <form action="signup.php" method="POST">
+                        <form action="./src/pages/signup.php" method="POST">
                             <input type="hidden" name="signup" value="1">
                             <ul>
                                 <li>
