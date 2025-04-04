@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<div class='registration-success-container'>
             <div class='registration-success-container1'>
                     <h2 class='success-message'>
-                    Registration successful! <a href='preDashboard.php'>Complete your Profile</a>
+                    Registration successful! <a href='../pages/preDashboard.php'>Complete your Profile</a>
                     </h2>
                     </div>
                 </div>";

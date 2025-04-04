@@ -28,7 +28,7 @@
             </div>
             <div class="right">
                 <h1>CHECKOUT</h1>
-                <form action="checkout.php" method="POST">
+                <form action="src/pages/checkout.php" method="POST">
                 <div class="form">
                     <div class="group">
                         <label for="full-name">Full Name</label>

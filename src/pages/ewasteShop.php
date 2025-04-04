@@ -85,35 +85,35 @@
             <h3>Latest Available Items</h3>
             <div class="product-grid" id="product-list">
                     <div class="product-card" value="motherboard">
-                        <img src="/images/productsImg/motherboard1.png" alt="Motherboard">
+                        <img src="/EWastePH/Public/images/productsImg/motherboard1.png" alt="Motherboard">
                         <h3>Motherboard</h3>
                         <p>P 350.00</p>
                         <button class="btn">Add to Cart</button>
                         <button class="btn">Buy</button>
                     </div>
                     <div class="product-card" value="processor">
-                        <img src="/Public/images/productsImg/dellCpu.png" alt="Processor">
+                        <img src="/EWastePH/Public/images/productsImg/dellCpu.png" alt="Processor">
                         <h3>Dell CPU</h3>
                         <p>P 1,000.00</p>
                         <button class="btn">Add to Cart</button>
                         <button class="btn">Buy</button>
                     </div>
                     <div class="product-card" value="laptop">
-                        <img src="images/productsImg/defected_laptop.png" alt="RAM">
+                        <img src="/EWastePH/Public/images/productsImg/defected_laptop.png" alt="RAM">
                         <h3>HP defected laptop</h3>
                         <p>P 500.00</p>
                         <button class="btn">Add to Cart</button>
                         <button class="btn">Buy</button>
                     </div>
                     <div class="product-card" value="Player">
-                        <img src="images/productsImg/discplayer.png" alt="RAM">
+                        <img src="/EWastePH/Public/images/productsImg/discplayer.png" alt="RAM">
                         <h3>Disc Player</h3>
                         <p>P 500.00</p>
                         <button class="btn">Add to Cart</button>
                         <button class="btn">Buy</button>
                     </div>
                     <div class="product-card" value="hardDrive">
-                        <img src="images/productsImg/sd.png">
+                        <img src="/EWastePH/Public/images/productsImg/sd.png">
                         <h3>SD sht</h3>
                         <p>P 500.00</p>
                         <button class="btn">Add to Cart</button>

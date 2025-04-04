@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         echo "<h2>Order placed successfully!</h2>";
-        echo "<a href='index.html'>Go back to home</a>";
+        echo "<a href='../src/ewasteWeb.php'>Go back to home</a>";
     } else {
         echo "Error: " . $stmt->error;
     }
