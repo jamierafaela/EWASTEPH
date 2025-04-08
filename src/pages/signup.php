@@ -31,8 +31,7 @@
                     echo "<div class='registration-success-container'>
                     <div class='registration-success-container1'>
                             <h2 class='success-message'>
-                            Registration successful! <a href='preDashboard.php'>Complete your Profile</a>
-                            </h2>
+                            Registration successful!</h2> <a href='preDashboard.php'>Complete your Profile</a>
                             </div>
                         </div>";
                 } else {
