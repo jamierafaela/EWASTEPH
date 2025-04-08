@@ -64,7 +64,7 @@
                     <div class="product-card" data-category="motherboard">
                         <img src="/EWastePH/Public/images/productsImg/motherboard1.png" alt="Motherboard">
                         <h3>Motherboard</h3>
-                        <p>P 350.00</p>
+                        <p>P 450.00</p>
                         <button class="btn add-to-cart">Add to Cart</button>
                         <button class="btn">Buy</button>
                     </div>
