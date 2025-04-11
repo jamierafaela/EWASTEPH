@@ -969,7 +969,7 @@ section {
     padding: 20px;
 }
 
-.card {
+.card{
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -977,6 +977,7 @@ section {
     margin-bottom: 20px;
     margin-top: 100px;
 }
+
 
 
 .card-header {
