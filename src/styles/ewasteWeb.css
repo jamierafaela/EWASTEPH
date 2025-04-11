@@ -50,6 +50,7 @@ button.logo {
     display: flex;
     gap: 40px;
     list-style: none;
+    padding-right: 35px;
 }
 
 .nav-links li a {
@@ -977,7 +978,7 @@ section {
 .card{
     background: white;
     padding: 20px;
-    border-radius: 10px;
+
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     margin-top: 100px;

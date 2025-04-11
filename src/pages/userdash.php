@@ -15,25 +15,21 @@ $isLoggedIn = isset($_SESSION['user_id']); // Adjust based on your login session
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <div class="logo-container">
-                <a href="#home" class="logo"><img src="../../Public/images/logo.png" alt="EWastePH Logo"></a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-                <li><a href="ewasteShop.php">Shop</a></li>
-                <li>
-                <?php if (isset($_SESSION['user_id'])): ?>
-                    <a href="userdash.php"><i class="fa fa-user"></i></a>
-                <?php else: ?>
-                    <a href="#profile"><i class="fa fa-user"></i></a>
-                <?php endif; ?>
-                </li>>
-            </ul>
-        </nav>
+        <form>
+            <nav class="navbar">
+                <div class="logo-container">
+                    <button formaction="../pages/ewasteWeb.php" class="logo"><img src="../../Public/images/logo.png" alt="EWastePH Logo" /></button>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../pages/ewasteWeb.php#home">Home</a></li>
+                    <li><a href="../pages/ewasteWeb.php#about">About Us</a></li>
+                    <li><a href="../pages/ewasteWeb.php#faq">FAQ</a></li>
+                    <li><a href="../pages/ewasteWeb.php#contact">Contact Us</a></li>
+                    <li><a href="../pages/ewasteShop.php">Shop</a></li>
+                    <li><a href="../pages/ewasteWeb.php#profile"><i class="fa fa-user"></i></a></li>
+                </ul>
+            </nav>
+        </form>
     </header>
     
     <div class="userDashSec">

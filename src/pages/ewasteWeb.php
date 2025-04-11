@@ -63,7 +63,7 @@ session_start();
                 <?php else: ?>
                     <a href="#profile"><i class="fa fa-user"></i></a>
                 <?php endif; ?>
-                </li>>
+                </li>
             </ul>
         </nav>
     </header>
