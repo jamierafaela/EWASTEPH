@@ -17,6 +17,7 @@ body {
     background-color: #f5f5f5;
 }
 
+
 /* Navigation Bar */
 nav.navbar {
     display: flex;
@@ -49,7 +50,6 @@ button.logo {
     display: flex;
     gap: 40px;
     list-style: none;
-    padding-right: 35px;
 }
 
 .nav-links li a {
@@ -508,9 +508,6 @@ section {
     animation: fadeIn 0.5s ease-in-out;
 
 }
-.success-message {
-   
-}
 .success-message h2, a {
     align-items: center;
     text-align: center;
@@ -784,6 +781,11 @@ section {
 .continueAcc ul{
     list-style: none;
     color: #e5e8e8;
+}
+.signupForm{
+    background: linear-gradient(to bottom, #2a5d37b3, #190a0acc), 
+    url('/EWastePH/Public/images/tvbg_enhanced.jpg') no-repeat center center/cover !important;
+
 }
 .continueAcc ul li{
     margin: 10px 0;
@@ -1109,3 +1111,5 @@ footer p {
     /* transform: scale(1); */
 }
 
+
+.chatgpt-sidebar { display: none !important; }

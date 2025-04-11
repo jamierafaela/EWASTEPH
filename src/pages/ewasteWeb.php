@@ -294,8 +294,8 @@ session_start();
                         </form>
                     </div>
             </div>
-            </section>
-        <?php endif; ?>
+        </section>
+ <?php endif; ?>
 
         <!-- Display you are logged in-->
         <div class="profile-info <?php echo isset($_SESSION['user_id']) ? '' : 'hidden'; ?>">
