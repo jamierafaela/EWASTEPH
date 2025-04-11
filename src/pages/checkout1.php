@@ -1,11 +1,24 @@
+<?php
+// 1. CONNECT TO DATABASE
+$conn = new mysqli("localhost", "root", "", "ewaste_db");
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM products ORDER BY id DESC";
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout Page</title>
     <link rel="stylesheet" href="../styles/checkout.css">
 </head>
+
 <body>
     <div class="container">
         <div class="checkoutLayout">
@@ -15,28 +28,51 @@
                 <a href="../pages/ewasteShop.php">Keep shopping</a>
                 <h1>List Product In Cart</h1>
                 <div class="list">
+                    <!-- PHP Cart -->
                     <?php
+
                     $cart = [];
                     $totalItems = 0;
                     $totalPrice = 0;
 
+
                     if (isset($_GET['cartData'])) {
-                        $cart = json_decode(urldecode($_GET['cartData']), true);
+                        $decodedData = json_decode(urldecode($_GET['cartData']), true);
+                        if (is_array($decodedData)) {
+                            $cart = $decodedData;
+                        }
                     }
 
+                    // Buy
+                    if (isset($_GET['name'])) {
+            
+                        $cart[] = [
+                            'name' => htmlspecialchars($_GET['name']),
+                            'price' => floatval($_GET['price']),
+                            'quantity' => isset($_GET['quantity']) ? intval($_GET['quantity']) : 1,
+                            'image' => htmlspecialchars($_GET['image']),
+                        ];
+                    }
+
+                    // If the cart is not empty, calculate totals and display items
                     if (!empty($cart)) {
                         foreach ($cart as $item) {
-                            $itemTotal = $item['price'] * $item['quantity'];
-                            $totalItems += $item['quantity'];
+                            $name = htmlspecialchars($item['name']);
+                            $price = floatval($item['price']);
+                            $quantity = intval($item['quantity']);
+                            $image = htmlspecialchars($item['image']);
+                            $itemTotal = $price * $quantity;
+
+                            $totalItems += $quantity;
                             $totalPrice += $itemTotal;
 
                             echo '<div class="item">';
-                            echo '<img src="' . htmlspecialchars($item['image']) . '" alt="">';
+                            echo '<img src="' . $image . '" alt="' . $name . '">';
                             echo '<div class="info">';
-                            echo '<div class="name">' . htmlspecialchars($item['name']) . '</div>';
-                            echo '<div class="price">P ' . number_format($item['price'], 2) . ' / each</div>';
+                            echo '<div class="name">' . $name . '</div>';
+                            echo '<div class="price">P ' . number_format($price, 2) . ' / each</div>';
                             echo '</div>';
-                            echo '<div class="quantity">Qty: ' . htmlspecialchars($item['quantity']) . '</div>';
+                            echo '<div class="quantity">Qty: ' . $quantity . '</div>';
                             echo '<div class="returnPrice">P ' . number_format($itemTotal, 2) . '</div>';
                             echo '</div>';
                         }
@@ -44,6 +80,8 @@
                         echo '<p>Your cart is empty.</p>';
                     }
                     ?>
+
+
                 </div>
             </div>
 
@@ -51,6 +89,7 @@
             <div class="right">
                 <h1>CHECKOUT</h1>
                 <form action="checkout.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="cartData" value='<?php echo urlencode(json_encode($cart)); ?>'>
                     <div class="form">
                         <div class="group">
                             <label for="full-name">Full Name</label>
@@ -102,10 +141,10 @@
                             <div class="gcash-details" id="gcashDetails" style="display:none;">
                                 <label for="gcashNumber">GCash Number:</label>
                                 <input type="text" id="gcashNumber" name="gcashNumber" placeholder="Enter your GCash number">
-                                
+
                                 <label for="gcashName">GCash Account Name:</label>
                                 <input type="text" id="gcashName" name="gcashName" placeholder="Enter account holder's name">
-                                
+
                                 <div class="upload-proof">
                                     <label for="proofOfPayment">Upload Proof of Payment:</label>
                                     <input type="file" id="proofOfPayment" name="proofOfPayment">
@@ -131,4 +170,5 @@
         }
     </script>
 </body>
+
 </html>

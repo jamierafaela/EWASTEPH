@@ -1,3 +1,15 @@
+<?php
+// 1. CONNECT TO DATABASE
+$conn = new mysqli("localhost", "root", "", "ewaste_db");
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM products ORDER BY id DESC";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,51 +72,45 @@
             <div class="new-products">
                 <h3>Latest Available Items</h3>
                 <div class="product-grid" id="product-list">
-                    <!-- Sample Products -->
-                    <div class="product-card" data-category="motherboard">
-                        <img src="/EWastePH/Public/images/productsImg/motherboard1.png" alt="Motherboard">
-                        <h3>Motherboard</h3>
-                        <p>P 450.00</p>
-                        <button class="btn add-to-cart">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card" data-category="processor">
-                        <img src="/EWastePH/Public/images/productsImg/dellCpu.png" alt="Processor">
-                        <h3>Dell CPU</h3>
-                        <p>P 1,000.00</p>
-                        <button class="btn add-to-cart">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card" data-category="laptop">
-                        <img src="/EWastePH/Public/images/productsImg/defected_laptop.png" alt="RAM">
-                        <h3>HP defected laptop</h3>
-                        <p>P 500.00</p>
-                        <button class="btn add-to-cart">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card" data-category="Player">
-                        <img src="/EWastePH/Public/images/productsImg/discplayer.png" alt="Player">
-                        <h3>Disc Player</h3>
-                        <p>P 500.00</p>
-                        <button class="btn add-to-cart">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                    <div class="product-card" data-category="hdd">
-                        <img src="/EWastePH/Public/images/productsImg/sd.png" alt="HDD">
-                        <h3>SD Card</h3>
-                        <p>P 500.00</p>
-                        <button class="btn add-to-cart">Add to Cart</button>
-                        <button class="btn">Buy</button>
-                    </div>
-                </div>
+                <?php if ($result->num_rows > 0): ?>
+                        <?php while($row = $result->fetch_assoc()): ?>
+                            <div class="product-card" data-category="<?= htmlspecialchars($row['category']) ?>">
+                                <img src="<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['name']) ?>">
+                                <h3><?= htmlspecialchars($row['name']) ?></h3>
+                                <p>P <?= number_format($row['price'], 2) ?></p>
+                               
+                                <button class="btn add-to-cart" <?= $row['quantity'] <= 0 ? 'disabled' : '' ?>>Add to Cart</button>
+                                <button class="btn" <?= $row['quantity'] <= 0 ? 'disabled style="background-color: gray; cursor: not-allowed;"' : '' ?> onclick="<?= $row['quantity'] > 0 ? 'location.href=\'checkout1.php?name=' . urlencode($row['name']) . '&price=' . $row['price'] . '&quantity=1&image=' . urlencode($row['image']) . '\'' : 'return false;' ?>"> Buy</button>
+                                
+                            </div>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <p>No products available.</p>
+                    <?php endif; ?>
+
+                    
+
+                    
             </div>
 
             <div class="all-products">
                 <h3>All Available Items</h3>
-                <div class="product-grid">
-                    <!-- Sample Products Repeated -->
-                    <!-- Add more products here if necessary -->
-                </div>
+                <div class="product-grid" id="product-list">
+                <?php if ($result->num_rows > 0): ?>
+                        <?php while($row = $result->fetch_assoc()): ?>
+                            <div class="product-card" data-category="<?= htmlspecialchars($row['category']) ?>">
+                                <img src="<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['name']) ?>">
+                                <h3><?= htmlspecialchars($row['name']) ?></h3>
+                                <p>P <?= number_format($row['price'], 2) ?></p>
+                                <p>Stock: <?= $row['quantity'] ?></p>
+                                <button class="btn add-to-cart" <?= $row['quantity'] <= 0 ? 'disabled' : '' ?>>Add to Cart</button>
+                                <a href="checkout1.php?id=<?= $row['id'] ?>&name="add_to_cart<?= urlencode($row['name']) ?>&price=<?= $row['price'] ?> class="btn">Buy</a>
+                                
+                            </div>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <p>No products available.</p>
+                    <?php endif; ?>
             </div>
         </div>
     </section>
@@ -122,101 +128,107 @@
     </div>
 
     <script>
-        function toggleCart() {
-            const cart = document.querySelector('.cart');
-            cart.style.right = cart.style.right === '0px' ? '-100%' : '0px';
-        }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const cart = [];
-            const cartContainer = document.querySelector(".listCart");
-            const totalQuantity = document.querySelector(".totalQuantity");
-            const products = document.querySelectorAll(".product-card");
+    function toggleCart() {
+        const cart = document.querySelector('.cart');
+        cart.style.right = cart.style.right === '0px' ? '-100%' : '0px';
+    }
 
-            // Filter Products Based on Categories
-            document.getElementById("category-filter").addEventListener("change", function () {
-                const selected = this.value;
-                products.forEach(product => {
-                    if (selected === "all" || product.dataset.category === selected) {
-                        product.style.display = "block";
-                    } else {
-                        product.style.display = "none";
-                    }
-                });
+    document.addEventListener("DOMContentLoaded", function () {
+        const cart = [];
+        const cartContainer = document.querySelector(".listCart");
+        const totalQuantity = document.querySelector(".totalQuantity");
+        const products = document.querySelectorAll(".product-card");
+
+        // FEATURE: Filter Products Based on Selected Category
+        document.getElementById("category-filter").addEventListener("change", function () {
+            const selected = this.value;
+            products.forEach(product => {
+                if (selected === "all" || product.dataset.category === selected) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        });
+
+
+        document.querySelectorAll(".product-card .btn.add-to-cart").forEach(button => {
+            button.addEventListener("click", function () {
+                const productCard = button.closest(".product-card");
+                const productName = productCard.querySelector("h3").innerText;
+                const productPrice = parseFloat(productCard.querySelector("p:first-of-type").innerText.replace("P ", "").replace(",", ""));
+                const productImage = productCard.querySelector("img").src;
+
+                // Check if product is already in the cart
+                const existingItem = cart.find(item => item.name === productName);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({ name: productName, price: productPrice, image: productImage, quantity: 1 });
+                }
+                updateCart();
+            });
+        });
+
+    
+        function updateCart() {
+            cartContainer.innerHTML = "";
+            let total = 0;
+
+            // Display all items in the cart
+            cart.forEach((item, index) => {
+                total += item.quantity;
+                cartContainer.innerHTML += `
+                    <div class="item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="content">
+                            <div class="name">${item.name}</div>
+                            <div class="price">P ${item.price} / 1 product</div>
+                        </div>
+                        <div class="quantity">
+                            <button class="decrease" data-index="${index}">-</button>
+                            <span class="value">${item.quantity}</span>
+                            <button class="increase" data-index="${index}">+</button>
+                        </div>
+                    </div>
+                `;
             });
 
-            // Add to Cart Button Logic
-            document.querySelectorAll(".product-card .btn.add-to-cart").forEach(button => {
+            totalQuantity.innerText = total;
+
+            attachQuantityHandlers();
+
+            
+            document.getElementById("checkoutLink").href = "checkout1.php?cartData=" + encodeURIComponent(JSON.stringify(cart));
+        }
+
+
+        function attachQuantityHandlers() {
+
+            document.querySelectorAll(".decrease").forEach(button => {
                 button.addEventListener("click", function () {
-                    const productCard = button.closest(".product-card");
-                    const productName = productCard.querySelector("h3").innerText;
-                    const productPrice = parseFloat(productCard.querySelector("p").innerText.replace("P ", ""));
-                    const productImage = productCard.querySelector("img").src;
-
-                    // Check if product is already in the cart
-                    const existingItem = cart.find(item => item.name === productName);
-                    if (existingItem) {
-                        existingItem.quantity++;
+                    const index = button.getAttribute("data-index");
+                    if (cart[index].quantity > 1) {
+                        cart[index].quantity--;
                     } else {
-                        cart.push({ name: productName, price: productPrice, image: productImage, quantity: 1 });
+                        cart.splice(index, 1); // Remove item if quantity is 1
                     }
-
                     updateCart();
                 });
             });
 
-            // Update Cart Dynamically
-            function updateCart() {
-                cartContainer.innerHTML = "";
-                let total = 0;
-                cart.forEach((item, index) => {
-                    total += item.quantity;
-                    cartContainer.innerHTML += `
-                        <div class="item">
-                            <img src="${item.image}" alt="${item.name}">
-                            <div class="content">
-                                <div class="name">${item.name}</div>
-                                <div class="price">P ${item.price} / 1 product</div>
-                            </div>
-                            <div class="quantity">
-                                <button class="decrease" data-index="${index}">-</button>
-                                <span class="value">${item.quantity}</span>
-                                <button class="increase" data-index="${index}">+</button>
-                            </div>
-                        </div>
-                    `;
+            document.querySelectorAll(".increase").forEach(button => {
+                button.addEventListener("click", function () {
+                    const index = button.getAttribute("data-index");
+                    cart[index].quantity++;
+                    updateCart();
                 });
+            });
+        }
+    });
+</script>
 
-                totalQuantity.innerText = total;
-                attachQuantityHandlers();
-
-                // Set checkout link with cart data as query param (optional)
-                document.getElementById("checkoutLink").href = "checkout1.php?cartData=" + encodeURIComponent(JSON.stringify(cart));
-            }
-
-            // Attach event listeners for increasing/decreasing quantity
-            function attachQuantityHandlers() {
-                document.querySelectorAll(".decrease").forEach(button => {
-                    button.addEventListener("click", function () {
-                        const index = button.getAttribute("data-index");
-                        if (cart[index].quantity > 1) {
-                            cart[index].quantity--;
-                        } else {
-                            cart.splice(index, 1); // Remove item from cart
-                        }
-                        updateCart();
-                    });
-                });
-
-                document.querySelectorAll(".increase").forEach(button => {
-                    button.addEventListener("click", function () {
-                        const index = button.getAttribute("data-index");
-                        cart[index].quantity++;
-                        updateCart();
-                    });
-                });
-            }
-        });
-    </script>
 </body>
 </html>
+<?php $conn->close(); ?>

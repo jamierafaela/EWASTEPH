@@ -46,9 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-
-
 // JavaScript for Category Filter
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -70,3 +67,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+//Javasccript for the Login, sign up Background
+const loginBackground = document.querySelector('.login-background');
+const signupBackground = document.querySelector('.signup-background');  
