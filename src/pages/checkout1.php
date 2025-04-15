@@ -1,3 +1,5 @@
+
+
 <?php
 // 1. CONNECT TO DATABASE
 $conn = new mysqli("localhost", "root", "", "ewaste_db");
@@ -6,9 +8,17 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM products ORDER BY id DESC";
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../pages/ewasteWeb.php#loginSection");
+    exit();
+}
+
+
+$sql = "SELECT * FROM products ORDER BY product_id DESC";
 $result = $conn->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +44,7 @@ $result = $conn->query($sql);
                     $cart = [];
                     $totalItems = 0;
                     $totalPrice = 0;
-
+                    $checkoutDisabled = false;
 
                     if (isset($_GET['cartData'])) {
                         $decodedData = json_decode(urldecode($_GET['cartData']), true);
@@ -45,7 +55,6 @@ $result = $conn->query($sql);
 
                     // Buy
                     if (isset($_GET['name'])) {
-            
                         $cart[] = [
                             'name' => htmlspecialchars($_GET['name']),
                             'price' => floatval($_GET['price']),
@@ -54,7 +63,7 @@ $result = $conn->query($sql);
                         ];
                     }
 
-                    // If the cart is not empty, calculate totals and display items
+                    
                     if (!empty($cart)) {
                         foreach ($cart as $item) {
                             $name = htmlspecialchars($item['name']);
@@ -63,24 +72,34 @@ $result = $conn->query($sql);
                             $image = htmlspecialchars($item['image']);
                             $itemTotal = $price * $quantity;
 
-                            $totalItems += $quantity;
-                            $totalPrice += $itemTotal;
+                           
+                            $stmt = $conn->prepare("SELECT quantity FROM products WHERE name = ?");
+                            $stmt->bind_param("s", $name);
+                            $stmt->execute();
+                            $stmt->bind_result($availableStock);
+                            $stmt->fetch();
+                            $stmt->close();
 
-                            echo '<div class="item">';
-                            echo '<img src="' . $image . '" alt="' . $name . '">';
-                            echo '<div class="info">';
-                            echo '<div class="name">' . $name . '</div>';
-                            echo '<div class="price">P ' . number_format($price, 2) . ' / each</div>';
-                            echo '</div>';
-                            echo '<div class="quantity">Qty: ' . $quantity . '</div>';
-                            echo '<div class="returnPrice">P ' . number_format($itemTotal, 2) . '</div>';
-                            echo '</div>';
+                            if ($quantity <= $availableStock) {
+                                echo '<div class="item">';
+                                echo '<img src="' . $image . '" alt="' . $name . '">';
+                                echo '<div class="info">';
+                                echo '<div class="name">' . $name . '</div>';
+                                echo '<div class="price">P ' . number_format($price, 2) . ' / each</div>';
+                                echo '</div>';
+                                echo '<div class="quantity">Qty: ' . $quantity . '</div>';
+                                echo '<div class="returnPrice">P ' . number_format($itemTotal, 2) . '</div>';
+                                echo '</div>';
+
+                    
+                                
+
+                                $totalItems += $quantity;
+                                $totalPrice += $itemTotal;
+                            }
                         }
-                    } else {
-                        echo '<p>Your cart is empty.</p>';
                     }
                     ?>
-
 
                 </div>
             </div>
@@ -89,7 +108,7 @@ $result = $conn->query($sql);
             <div class="right">
                 <h1>CHECKOUT</h1>
                 <form action="checkout.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="cartData" value='<?php echo urlencode(json_encode($cart)); ?>'>
+                    <input type="hidden" name="cartData" value='<?php echo urlencode(json_encode($cart)); ?>'>
                     <div class="form">
                         <div class="group">
                             <label for="full-name">Full Name</label>
@@ -154,7 +173,13 @@ $result = $conn->query($sql);
                     </div>
 
                     <!-- Submit -->
-                    <button class="buttonCheckout" type="submit">CONFIRM CHECKOUT</button>
+
+                    <?php if ($checkoutDisabled): ?>
+                    
+                        <button class="buttonCheckout" type="submit" disabled>Checkout Unavailable -  Your cart exceeds the available stock.</button>
+                    <?php else: ?>
+                        <button class="buttonCheckout" type="submit">CONFIRM CHECKOUT</button>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>

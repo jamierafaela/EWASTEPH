@@ -1,6 +1,6 @@
 <?php
 session_start();
-$isLoggedIn = isset($_SESSION['user_id']); // Adjust based on your login session variable
+$isLoggedIn = isset($_SESSION['user_id']); 
 ?>
 
 

@@ -862,7 +862,6 @@ section {
 .userDashSec{
     background:linear-gradient(to bottom, rgba(191, 225, 188, 0.8), rgba(72, 169, 98, 0.7));
     overflow: hidden;
-    margin-top: 120px !important;
 }
 
 .logo {
@@ -973,17 +972,19 @@ section {
 .main-content {
     flex: 1;
     padding: 20px;
+    margin-top:50px ;
 }
 
 .card{
     background: white;
     padding: 20px;
-
+    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    margin-top: 100px;
 }
-
+.card dashboard-overview{
+    margin-top: 200px;
+}
 
 
 .card-header {
@@ -1113,4 +1114,20 @@ footer p {
 }
 
 
-.chatgpt-sidebar { display: none !important; }
+
+/*aaaaaa*/
+.login-alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.login-alert a {
+    color: #721c24;
+    font-weight: bold;
+    text-decoration: underline;
+}

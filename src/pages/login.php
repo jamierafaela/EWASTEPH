@@ -25,7 +25,7 @@
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
             if (password_verify($password, $row['password'])) {
-                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['full_name'] = $row['full_name'];
                 echo "<div class='logIn-success-container'>
                 <div class='registration-success-container1'>

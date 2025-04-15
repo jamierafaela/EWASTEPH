@@ -6,14 +6,17 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM products ORDER BY id DESC";
+$sql = "SELECT * FROM products ORDER BY product_id DESC";
 $result = $conn->query($sql);
 ?>
 
-<!DOCTYPE html>
 <?php
 session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
 ?>
+
+<!DOCTYPE html>
+
 
 <html lang="en">
 
@@ -71,13 +74,17 @@ session_start();
     <!-- Main Content -->
 
     <!-- Home Section -->
+     
     <section id="home" class="section home-section">
         <div class="text-box">
+            
             <h1>E-WASTE PH</h1>
             <p>"Old tech, New harm—Dispose responsibly, Save our Planet."</p>
             <div class="cta-buttons">
-                <a href="#shop" class="btn">Buy</a>
-                <a href="#contact" class="btn">Sell</a>
+            <button onclick="handleAction('buy')" class="btn">Buy</button>
+            <button onclick="handleAction('sell')" class="btn">Sell</button>
+
+            
             </div>
         </div>
     </section>
@@ -197,7 +204,6 @@ session_start();
         <h2>Shop</h2>
         <div class="new-products">
             <h3>Latest Available Items</h3>
-
             <div class="product-grid" id="product-list">
                 <?php if ($result->num_rows > 0): ?>
                     <?php while ($row = $result->fetch_assoc()): ?>
@@ -205,14 +211,18 @@ session_start();
                             <img src="<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['name']) ?>">
                             <h3><?= htmlspecialchars($row['name']) ?></h3>
                             <p>P <?= number_format($row['price'], 2) ?></p>
-
+                           
                             <button class="btn add-to-cart" <?= $row['quantity'] <= 0 ? 'disabled' : '' ?>>Add to Cart</button>
-                            <button class="btn" <?= $row['quantity'] <= 0 ? 'disabled style="background-color: gray; cursor: not-allowed;"' : '' ?> onclick="<?= $row['quantity'] > 0 ? 'location.href=\'checkout1.php?name=' . urlencode($row['name']) . '&price=' . $row['price'] . '&quantity=1&image=' . urlencode($row['image']) . '\'' : 'return false;' ?>"> Buy</button>
+                            <!--buy will not work when not logged in-->
+                            <button class="btn" <?= $row['quantity'] <= 0 ? 'disabled style="background-color: gray; cursor: not-allowed;"' : '' ?> 
+                                    onclick="<?= $row['quantity'] > 0 ? ($isLoggedIn ? 'location.href=\'checkout1.php?name=' . urlencode($row['name']) . '&price=' . $row['price'] . '&quantity=1&image=' . urlencode($row['image']) . '\'' : 'document.getElementById(\"loginSection\").scrollIntoView({ behavior: \"smooth\" })') : 'return false;' ?>">Buy
+                            </button>
+
                         </div>
                     <?php endwhile; ?>
-                <?php else: ?>
-                    <p>No products available.</p>
-                <?php endif; ?>
+                    <?php else: ?>
+                        <p>No products available.</p>
+                    <?php endif; ?>
             </div>
         </div>
 
@@ -228,7 +238,7 @@ session_start();
 
     <!-- Profile Section -->
     <?php if (!isset($_SESSION['user_id'])): ?>
-        <section id="profile" class="section profile-section">
+        <section id="loginSection" class="section profile-section">
             <section class="profile-contents">
                 <div class="logIn">
 
@@ -294,9 +304,8 @@ session_start();
                         </form>
                     </div>
             </div>
-        </section>
- <?php endif; ?>
-
+            </section>
+        <?php endif; ?>
         <!-- Display you are logged in-->
         <div class="profile-info <?php echo isset($_SESSION['user_id']) ? '' : 'hidden'; ?>">
             <?php if (isset($_SESSION['user_id'])): ?>
@@ -308,19 +317,6 @@ session_start();
             <?php endif; ?>
         </div>
         </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <!-- Back to Top Button -->
         <button id="upButton" title="Go to top">
@@ -340,6 +336,28 @@ session_start();
                 <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
         </footer>
+
+        <script>
+
+// script for login
+  const isLoggedIn = <?php echo $isLoggedIn ? 'true' : 'false'; ?>;
+
+  function handleAction(action) {
+    if (isLoggedIn) {
+
+      if (action === 'buy') {
+        window.location.href = "ewasteShop.php";
+      } else if (action === 'sell') {
+        window.location.href = "sell.php";
+      }
+    } else {
+
+      document.getElementById("loginSection").scrollIntoView({ behavior: "smooth" });
+    }
+  }
+</script>
+
+
 </body>
 
 </html>
