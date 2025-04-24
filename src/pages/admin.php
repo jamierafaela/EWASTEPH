@@ -55,6 +55,7 @@ $rejected_orders = $conn->query("SELECT * FROM orders WHERE order_status = 'Reje
 <head>
     <title>Admin Panel - Orders</title>
     <style>
+        /*
         body {
             font-family: 'Segoe UI', sans-serif;
             margin: 0;
@@ -162,185 +163,204 @@ $rejected_orders = $conn->query("SELECT * FROM orders WHERE order_status = 'Reje
             border-radius: 6px;
             font-weight: bold;
         }
+                */
     </style>
+
+    <link rel="stylesheet" href="../../src/styles/adminPage.css">
 </head>
 
 <body>
-    <h2>Admin - Orders</h2>
-    <?php if (isset($_SESSION['message'])): ?>
-        <div class="flash-message"><?= $_SESSION['message']; ?></div>
-        <?php unset($_SESSION['message']); ?>
-    <?php endif; ?>
+    <div class="adminPage">
+        <div class="adminPageTitle">
+            <h2>Admin - Orders</h2>
+            <?php if (isset($_SESSION['message'])): ?>
+                <div class="flash-message"><?= $_SESSION['message']; ?></div>
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
+        </div>
 
-    <!--pending orders -->
-    <h3>Pending Orders</h3>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Full Name</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Products</th>
-            <th>Total Price</th>
-            <th>Payment Method</th>
-            <th>Proof</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
+        <div class="adminPageContent">
+            <!--pending orders -->
+            <h3>Pending Orders</h3>
+            <div class="pendingTab">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Products</th>
+                    <th>Total Price</th>
+                    <th>Payment Method</th>
+                    <th>Proof</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
 
-        <?php while ($order = $pending_orders->fetch_assoc()): ?>
-            <tr>
-                <td><?= $order['order_id'] ?></td>
-                <td><?= $order['full_name'] ?></td>
-                <td><?= $order['phone_number'] ?></td>
-                <td><?= $order['street'] ?>, <?= $order['city'] ?>, <?= $order['province'] ?>, <?= $order['zipcode'] ?></td>
-                <td>
-                    <?php
-                    $order_id = $order['order_id'];
-                    $product_sql = "SELECT * FROM order_items WHERE order_id = $order_id";
-                    $product_result = $conn->query($product_sql);
-                    $product_list = "";
-                    while ($product = $product_result->fetch_assoc()) {
-                        $product_list .= $product['quantity'] . " x " . $product['product_name'] . "<br>";
-                    }
-                    echo $product_list ? $product_list : "No products";
-                    ?>
-                </td>
-                <td>₱<?= $order['totalPrice'] ?></td>
-                <td><?= $order['payment_method'] ?></td>
-                <td>
-                    <?php if (!empty($order['proofOfPayment'])): ?>
-                        <a href="<?= $order['proofOfPayment'] ?>" target="_blank">View</a>
-                    <?php else: ?>
-                        N/A
-                    <?php endif; ?>
-                </td>
-                <td><?= $order['order_status'] ?></td>
-                <td>
-                    <form method="POST" style="display:inline;">
-                        <input type="hidden" name="order_id" value="<?= $order['order_id'] ?>">
-                        <input type="hidden" name="action" value="approve">
-                        <button class="btn approve" type="submit">Approve</button>
-                    </form>
-                    <form method="POST" style="display:inline;">
-                        <input type="hidden" name="order_id" value="<?= $order['order_id'] ?>">
-                        <input type="hidden" name="action" value="reject">
-                        <button class="btn reject" type="submit">Reject</button>
-                    </form>
-                </td>
-            </tr>
-        <?php endwhile; ?>
-    </table>
+                <?php while ($order = $pending_orders->fetch_assoc()): ?>
+                    <tr>
+                        <td><?= $order['order_id'] ?></td>
+                        <td><?= $order['full_name'] ?></td>
+                        <td><?= $order['phone_number'] ?></td>
+                        <td><?= $order['street'] ?>, <?= $order['city'] ?>, <?= $order['province'] ?>, <?= $order['zipcode'] ?></td>
+                        <td>
+                            <?php
+                            $order_id = $order['order_id'];
+                            $product_sql = "SELECT * FROM order_items WHERE order_id = $order_id";
+                            $product_result = $conn->query($product_sql);
+                            $product_list = "";
+                            while ($product = $product_result->fetch_assoc()) {
+                                $product_list .= $product['quantity'] . " x " . $product['product_name'] . "<br>";
+                            }
+                            echo $product_list ? $product_list : "No products";
+                            ?>
+                        </td>
+                        <td>₱<?= $order['totalPrice'] ?></td>
+                        <td><?= $order['payment_method'] ?></td>
+                        <td>
+                            <?php if (!empty($order['proofOfPayment'])): ?>
+                                <a href="<?= $order['proofOfPayment'] ?>" target="_blank">View</a>
+                            <?php else: ?>
+                                N/A
+                            <?php endif; ?>
+                        </td>
+                        <td><?= $order['order_status'] ?></td>
+                        <td>
+                            <form method="POST" style="display:inline;">
+                                <input type="hidden" name="order_id" value="<?= $order['order_id'] ?>">
+                                <input type="hidden" name="action" value="approve">
+                                <button class="btn approve" type="submit">Approve</button>
+                            </form>
+                            <form method="POST" style="display:inline;">
+                                <input type="hidden" name="order_id" value="<?= $order['order_id'] ?>">
+                                <input type="hidden" name="action" value="reject">
+                                <button class="btn reject" type="submit">Reject</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            </table>
+            </div>
+        </div>
 
-    <!-- aproved orders -->
-    <h3>Approved Orders</h3>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Full Name</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Products</th>
-            <th>Total Price</th>
-            <th>Payment Method</th>
-            <th>Proof</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
+        <div class="adminPageContent">
+            <!-- aproved orders -->
+            <h3>Approved Orders</h3>
+            <div class="approvedTab">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Products</th>
+                    <th>Total Price</th>
+                    <th>Payment Method</th>
+                    <th>Proof</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
 
-        <?php while ($order = $approved_orders->fetch_assoc()): ?>
-            <tr>
-                <td><?= $order['order_id'] ?></td>
-                <td><?= $order['full_name'] ?></td>
-                <td><?= $order['phone_number'] ?></td>
-                <td><?= $order['street'] ?>, <?= $order['city'] ?>, <?= $order['province'] ?>, <?= $order['zipcode'] ?></td>
-                <td>
-                    <?php
-                    $order_id = $order['order_id'];
-                    $product_sql = "SELECT * FROM order_items WHERE order_id = $order_id";
-                    $product_result = $conn->query($product_sql);
-                    $product_list = "";
-                    while ($product = $product_result->fetch_assoc()) {
-                        $product_list .= $product['quantity'] . " x " . $product['product_name'] . "<br>";
-                    }
-                    echo $product_list ? $product_list : "No products";
-                    ?>
-                </td>
-                <td>₱<?= $order['totalPrice'] ?></td>
-                <td><?= $order['payment_method'] ?></td>
-                <td>
-                    <?php if (!empty($order['proofOfPayment'])): ?>
-                        <a href="<?= $order['proofOfPayment'] ?>" target="_blank">View</a>
-                    <?php else: ?>
-                        N/A
-                    <?php endif; ?>
-                </td>
-                <td><?= $order['order_status'] ?></td>
-                <td>
-                    <form method="POST" style="display:inline;">
-                        <input type="hidden" name="order_id" value="<?= $order['order_id'] ?>">
-                        <input type="hidden" name="action" value="reset">
-                        <button class="btn reset" type="submit">Reset to Pending</button>
-                    </form>
-                </td>
-            </tr>
-        <?php endwhile; ?>
-    </table>
+                <?php while ($order = $approved_orders->fetch_assoc()): ?>
+                    <tr>
+                        <td><?= $order['order_id'] ?></td>
+                        <td><?= $order['full_name'] ?></td>
+                        <td><?= $order['phone_number'] ?></td>
+                        <td><?= $order['street'] ?>, <?= $order['city'] ?>, <?= $order['province'] ?>, <?= $order['zipcode'] ?></td>
+                        <td>
+                            <?php
+                            $order_id = $order['order_id'];
+                            $product_sql = "SELECT * FROM order_items WHERE order_id = $order_id";
+                            $product_result = $conn->query($product_sql);
+                            $product_list = "";
+                            while ($product = $product_result->fetch_assoc()) {
+                                $product_list .= $product['quantity'] . " x " . $product['product_name'] . "<br>";
+                            }
+                            echo $product_list ? $product_list : "No products";
+                            ?>
+                        </td>
+                        <td>₱<?= $order['totalPrice'] ?></td>
+                        <td><?= $order['payment_method'] ?></td>
+                        <td>
+                            <?php if (!empty($order['proofOfPayment'])): ?>
+                                <a href="<?= $order['proofOfPayment'] ?>" target="_blank">View</a>
+                            <?php else: ?>
+                                N/A
+                            <?php endif; ?>
+                        </td>
+                        <td><?= $order['order_status'] ?></td>
+                        <td>
+                            <form method="POST" style="display:inline;">
+                                <input type="hidden" name="order_id" value="<?= $order['order_id'] ?>">
+                                <input type="hidden" name="action" value="reset">
+                                <button class="btn reset" type="submit">Reset to Pending</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            </table>
+            </div>
+        </div>
 
-    <!--rejected orders -->
-    <h3>Rejected Orders</h3>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Full Name</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Products</th>
-            <th>Total Price</th>
-            <th>Payment Method</th>
-            <th>Proof</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
+        <div class="adminPageContent">
+            <!--rejected orders -->
+            <h3>Rejected Orders</h3>
+            <div class="rejectedTab">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Products</th>
+                    <th>Total Price</th>
+                    <th>Payment Method</th>
+                    <th>Proof</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
 
-        <?php while ($order = $rejected_orders->fetch_assoc()): ?>
-            <tr>
-                <td><?= $order['order_id'] ?></td>
-                <td><?= $order['full_name'] ?></td>
-                <td><?= $order['phone_number'] ?></td>
-                <td><?= $order['street'] ?>, <?= $order['city'] ?>, <?= $order['province'] ?>, <?= $order['zipcode'] ?></td>
-                <td>
-                    <?php
-                    $order_id = $order['order_id'];
-                    $product_sql = "SELECT * FROM order_items WHERE order_id = $order_id";
-                    $product_result = $conn->query($product_sql);
-                    $product_list = "";
-                    while ($product = $product_result->fetch_assoc()) {
-                        $product_list .= $product['quantity'] . " x " . $product['product_name'] . "<br>";
-                    }
-                    echo $product_list ? $product_list : "No products";
-                    ?>
-                </td>
-                <td>₱<?= $order['totalPrice'] ?></td>
-                <td><?= $order['payment_method'] ?></td>
-                <td>
-                    <?php if (!empty($order['proofOfPayment'])): ?>
-                        <a href="<?= $order['proofOfPayment'] ?>" target="_blank">View</a>
-                    <?php else: ?>
-                        N/A
-                    <?php endif; ?>
-                </td>
-                <td><?= $order['order_status'] ?></td>
-                <td>
-                    <form method="POST" style="display:inline;">
-                        <input type="hidden" name="order_id" value="<?= $order['order_id'] ?>">
-                        <input type="hidden" name="action" value="reset">
-                        <button class="btn reset" type="submit">Reset to Pending</button>
-                    </form>
-                </td>
-            </tr>
-        <?php endwhile; ?>
-    </table>
+                <?php while ($order = $rejected_orders->fetch_assoc()): ?>
+                    <tr>
+                        <td><?= $order['order_id'] ?></td>
+                        <td><?= $order['full_name'] ?></td>
+                        <td><?= $order['phone_number'] ?></td>
+                        <td><?= $order['street'] ?>, <?= $order['city'] ?>, <?= $order['province'] ?>, <?= $order['zipcode'] ?></td>
+                        <td>
+                            <?php
+                            $order_id = $order['order_id'];
+                            $product_sql = "SELECT * FROM order_items WHERE order_id = $order_id";
+                            $product_result = $conn->query($product_sql);
+                            $product_list = "";
+                            while ($product = $product_result->fetch_assoc()) {
+                                $product_list .= $product['quantity'] . " x " . $product['product_name'] . "<br>";
+                            }
+                            echo $product_list ? $product_list : "No products";
+                            ?>
+                        </td>
+                        <td>₱<?= $order['totalPrice'] ?></td>
+                        <td><?= $order['payment_method'] ?></td>
+                        <td>
+                            <?php if (!empty($order['proofOfPayment'])): ?>
+                                <a href="<?= $order['proofOfPayment'] ?>" target="_blank">View</a>
+                            <?php else: ?>
+                                N/A
+                            <?php endif; ?>
+                        </td>
+                        <td><?= $order['order_status'] ?></td>
+                        <td>
+                            <form method="POST" style="display:inline;">
+                                <input type="hidden" name="order_id" value="<?= $order['order_id'] ?>">
+                                <input type="hidden" name="action" value="reset">
+                                <button class="btn reset" type="submit">Reset to Pending</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            </table>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

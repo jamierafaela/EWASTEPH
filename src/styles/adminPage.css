@@ -1,0 +1,168 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 30px;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+/* Page Title */
+.adminPageTitle h2 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 40px;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+/* Section Headings */
+h3 {
+    color: #444;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: 500;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    margin-bottom: 50px;
+}
+
+th, td {
+    padding: 16px 12px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+th {
+    background: #4caf50;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+td {
+    font-size: 15px;
+    color: #555;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin: 0 2px;
+}
+
+/* Button Colors */
+.approve {
+    background-color: #43a047;
+    color: white;
+}
+
+.approve:hover {
+    background-color: #388e3c;
+}
+
+.reject {
+    background-color: #e53935;
+    color: white;
+}
+
+.reject:hover {
+    background-color: #d32f2f;
+}
+
+.reset {
+    background-color: #fb8c00;
+    color: white;
+}
+
+.reset:hover {
+    background-color: #ef6c00;
+}
+
+/* Links */
+a {
+    color: #1976d2;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Flash Message */
+.flash-message {
+    background-color: #e3f9e5;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+    padding: 14px;
+    margin-bottom: 25px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Section Container */
+.adminPageContent {
+    margin-bottom: 60px;
+}
+
+/* Product List */
+td .product-list {
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Proof of Payment (if image preview is added later) */
+.proof-image {
+    max-width: 50px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Subtle Shadows for Cards */
+.card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+}
+
+/* Page Container */
+.adminPage {
+    max-width: 1300px;
+    margin: auto;
+}
+.approvedTab th{
+    background-color: #4caf50;
+}
+.pendingTab th{
+    background-color: #bfc846;
+}
+.rejectedTab th{
+    background-color: #af4c4c;
+}

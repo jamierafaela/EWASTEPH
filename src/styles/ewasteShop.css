@@ -324,7 +324,7 @@ button.logo {
 /* Cart Icon */
 .cartIcon i {
     font-size: 30px;
-    color: #2a5d37;   
+    color: white;   
     transition: transform 0.3s ease, color 0.3s ease;
 }
 

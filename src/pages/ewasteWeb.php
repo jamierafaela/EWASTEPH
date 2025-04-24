@@ -295,7 +295,11 @@ $isLoggedIn = isset($_SESSION['user_id']);
                                 </li>
                                 <li>
                                     <label>Password:</label>
-                                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                                    <input type="password" id="password" name="password" placeholder="Enter your password" required oninput="validatePasswordMatch()"minlength="8">
+                                </li>
+                                <li>
+                                   <label>Confirm Password:</label>
+                                   <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required oninput="validateConfirmPassword(this)" minlength="8">  
                                 </li>
                                 <li>
                                     <button type="submit" class="btn">Sign up</button>
@@ -306,16 +310,6 @@ $isLoggedIn = isset($_SESSION['user_id']);
             </div>
             </section>
         <?php endif; ?>
-        <!-- Display you are logged in-->
-        <div class="profile-info <?php echo isset($_SESSION['user_id']) ? '' : 'hidden'; ?>">
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <h2>Welcome, <span id="userName"><?php echo htmlspecialchars($_SESSION['full_name']); ?></span></h2>
-                <p>Your profile information will be displayed here.</p>
-                <button id="logoutBtn" class="btn" onclick="window.location.href='logout.php'">Log out</button>
-            <?php else: ?>
-                <a href="login.php">Login</a> | <a href="signup.php">Sign Up</a>
-            <?php endif; ?>
-        </div>
         </section>
 
         <!-- Back to Top Button -->
@@ -355,6 +349,47 @@ $isLoggedIn = isset($_SESSION['user_id']);
       document.getElementById("loginSection").scrollIntoView({ behavior: "smooth" });
     }
   }
+
+
+//confirmpass
+  const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+
+        function validatePassword(input) {
+            if (input.value.length < 8 ) {
+                input.setCustomValidity("Please enter at least 8 characters for your password.");
+            } else {
+                input.setCustomValidity("");
+            }
+            validatePasswordMatch();
+        }
+
+        function validateConfirmPassword(input) {
+            if (input.value.length < 8 ) {
+                input.setCustomValidity("Please enter at least 8 characters for your confirmed password.");
+            } else if (passwordInput.value !== confirmPasswordInput.value) {
+                input.setCustomValidity("Passwords do not match.");
+            } else {
+                input.setCustomValidity("");
+            }
+        }
+
+        function validatePasswordMatch() {
+            if (confirmPasswordInput.value.length >= 8 && passwordInput.value !== confirmPasswordInput.value) {
+                confirmPasswordInput.setCustomValidity("Passwords do not match.");
+            } else if (confirmPasswordInput.value.length >= 8 && passwordInput.value === confirmPasswordInput.value) {
+                confirmPasswordInput.setCustomValidity("");
+            }
+        }
+
+        passwordInput.addEventListener('input', function() {
+            validatePassword(this);
+        });
+
+        confirmPasswordInput.addEventListener('input', function() {
+            validateConfirmPassword(this);
+        });
+
 </script>
 
 
